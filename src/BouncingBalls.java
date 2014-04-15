@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.geom.Ellipse2D;
 import java.util.List;
 
 /**
@@ -25,7 +24,7 @@ public final class BouncingBalls extends Animator {
 		super.init();
 		double modelWidth = canvasWidth / PIXELS_PER_METER;
 		modelHeight = canvasHeight / PIXELS_PER_METER;
-		model = new DummyModel(modelWidth, modelHeight);
+		model = new BallController(modelWidth, modelHeight);
 	}
 
 	@Override
@@ -35,12 +34,12 @@ public final class BouncingBalls extends Animator {
 		g.fillRect(0, 0, canvasWidth, canvasHeight);
 		// Update the model
 		model.tick(deltaT);
-		List<Ellipse2D> balls = model.getBalls();
+		List<Ball> balls = model.getBalls();
 		// Transform balls to fit canvas
 		g.setColor(Color.RED);
 		g.scale(PIXELS_PER_METER, -PIXELS_PER_METER);
 		g.translate(0, -modelHeight);
-		for (Ellipse2D b : balls) {
+		for (Ball b : balls) {
 			g.fill(b);
 		}
 	}

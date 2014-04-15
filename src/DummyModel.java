@@ -21,10 +21,10 @@ public class DummyModel implements IBouncingBallsModel {
 
 	@Override
 	public void tick(double deltaT) {
-		if (x < r || x > areaWidth - r) {
+		if (x < r || x > areaWidth) {
 			vx *= -1;
 		}
-		if (y < r || y > areaHeight - r) {
+		if (y < r || y > areaHeight) {
 			vy *= -1;
 		}
 		x += vx * deltaT;
@@ -32,9 +32,10 @@ public class DummyModel implements IBouncingBallsModel {
 	}
 
 	@Override
-	public List<Ellipse2D> getBalls() {
-		List<Ellipse2D> myBalls = new LinkedList<Ellipse2D>();
-		myBalls.add(new Ellipse2D.Double(x - r, y - r, 2 * r, 2 * r));
-		return myBalls;
+	public List<Ball> getBalls() {
+//		List<Ball> myBalls = new LinkedList<Ellipse2D>();
+//		myBalls.add(new Ellipse2D.Double(x - r, y - r, 2 * r, 2 * r));
+//		myBalls.add(new Ellipse2D.Double(areaWidth - r, y - r, r, r));
+		return null;
 	}
 }
